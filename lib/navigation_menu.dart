@@ -1,3 +1,4 @@
+import 'package:echo/features/articles/presentation/screens/search_screen.dart';
 import 'package:echo/features/articles/presentation/screens/top_headlines_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,9 +13,7 @@ class NavigationMenu extends StatefulWidget {
 class _NavigationMenuState extends State<NavigationMenu> {
   final List<Widget> _screens = [
     const TopHeadlinesScreen(),
-    const Center(
-      child: Text('Search Screen'),
-    ),
+    const SearchScreen(),
     const Center(
       child: Text('Saved Screen'),
     ),
@@ -24,6 +23,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: _screens[_navigationMenuIndex],
       ),

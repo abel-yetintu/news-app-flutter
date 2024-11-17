@@ -22,4 +22,17 @@ class ArticleRepositoryImpl implements ArticleRepository {
       return Left(Failure(message: e.toString()));
     }
   }
+  
+  @override
+  Future<Either<Failure, List<ArticleEntity>>> searchArticles({required String query}) async {
+    try {
+      final articles = await articleRemoteDataSource.searchArticles(query: query);
+      return Right(articles.map((article) => article.mapToEntity()).toList());
+    } catch (e, stackTrace) {
+      debugPrint(e.toString());
+      debugPrint(stackTrace.toString());
+      return Left(Failure(message: e.toString()));
+    }
+  }
+
 }

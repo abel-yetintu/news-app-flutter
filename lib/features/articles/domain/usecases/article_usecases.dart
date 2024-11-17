@@ -11,7 +11,17 @@ class FetchTopHeadlinesUseCase {
     required this.articleRepository,
   });
 
-  Future<Either<Failure, List<ArticleEntity>>> execute({required NewsCategory newsCategory}) {
-    return articleRepository.fetchTopHeadlines(newsCategory: newsCategory);
+  Future<Either<Failure, List<ArticleEntity>>> execute({required NewsCategory newsCategory}) async {
+    return await articleRepository.fetchTopHeadlines(newsCategory: newsCategory);
+  }
+}
+
+class SearchArticlesUseCase {
+  final ArticleRepository articleRepository;
+
+  const SearchArticlesUseCase({required this.articleRepository});
+
+  Future<Either<Failure, List<ArticleEntity>>> execute({required String query}) async {
+    return await articleRepository.searchArticles(query: query);
   }
 }

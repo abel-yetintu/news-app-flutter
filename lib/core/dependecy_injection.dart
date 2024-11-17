@@ -5,6 +5,7 @@ import 'package:echo/features/articles/data/data_sources/remote/article_remote_d
 import 'package:echo/features/articles/data/repositories/article_repository_impl.dart';
 import 'package:echo/features/articles/domain/repositories/article_repository.dart';
 import 'package:echo/features/articles/domain/usecases/article_usecases.dart';
+import 'package:echo/features/articles/presentation/bloc/search_bloc.dart';
 import 'package:echo/features/articles/presentation/bloc/top_headlines_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -25,4 +26,8 @@ Future<void> initSL() async {
   sl.registerLazySingleton<ArticleRemoteDataSource>(() => ArticleRemoteDataSourceImpl(client: sl()));
 
   sl.registerLazySingleton(() => Dio());
+
+  sl.registerFactory(() => SearchBloc(searchArticleUseCase: sl()));
+
+  sl.registerLazySingleton(() => SearchArticlesUseCase(articleRepository: sl()));
 }

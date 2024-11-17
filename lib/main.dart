@@ -1,6 +1,7 @@
 import 'package:echo/core/dependecy_injection.dart';
 import 'package:echo/core/routing/route_generator.dart';
 import 'package:echo/features/articles/presentation/bloc/category_bloc.dart';
+import 'package:echo/features/articles/presentation/bloc/search_bloc.dart';
 import 'package:echo/features/articles/presentation/bloc/top_headlines_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,6 +25,7 @@ class Echo extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => CategoryBloc()),
         BlocProvider(create: (context) => sl<TopHeadlinesBloc>()),
+        BlocProvider(create: (context) => sl<SearchBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
