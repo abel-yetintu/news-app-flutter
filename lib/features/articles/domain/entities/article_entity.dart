@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:echo/features/articles/domain/entities/source_entity.dart';
 
 class ArticleEntity extends Equatable {
+  final int? id;
   final String title;
   final String description;
   final String content;
@@ -11,6 +12,7 @@ class ArticleEntity extends Equatable {
   final SourceEntity source;
 
   const ArticleEntity({
+    this.id,
     required this.title,
     required this.description,
     required this.content,
@@ -21,6 +23,7 @@ class ArticleEntity extends Equatable {
   });
 
   ArticleEntity copyWith({
+    int? id,
     String? title,
     String? description,
     String? content,
@@ -30,6 +33,7 @@ class ArticleEntity extends Equatable {
     SourceEntity? source,
   }) {
     return ArticleEntity(
+      id: id ?? this.id,
       title: title ?? this.title,
       description: description ?? this.description,
       content: content ?? this.content,
@@ -41,5 +45,5 @@ class ArticleEntity extends Equatable {
   }
 
   @override
-  List<Object?> get props => [title, description, content, url, imageUrl, publishedAt, source];
+  List<Object?> get props => [id, title, description, content, url, imageUrl, publishedAt, source];
 }

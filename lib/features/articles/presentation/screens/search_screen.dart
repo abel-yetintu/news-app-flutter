@@ -1,4 +1,5 @@
 import 'package:echo/core/utils/extensions.dart';
+import 'package:echo/core/utils/helper_functions.dart';
 import 'package:echo/core/utils/helper_widgets.dart';
 import 'package:echo/features/articles/presentation/bloc/search_bloc.dart';
 import 'package:echo/features/articles/presentation/bloc/search_event.dart';
@@ -76,15 +77,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: BlocConsumer<SearchBloc, SearchState>(
               listener: (context, state) {
                 if (state is SearchFailed) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        state.message,
-                        style: TextStyle(color: context.theme.colorScheme.onError),
-                      ),
-                      backgroundColor: context.theme.colorScheme.error,
-                    ),
-                  );
+                  HelperFunctions.showErrorSnackBar(message: state.message);
                 }
               },
               builder: (context, state) {

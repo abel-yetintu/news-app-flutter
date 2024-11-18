@@ -1,3 +1,4 @@
+import 'package:echo/features/articles/domain/entities/article_entity.dart';
 import 'package:echo/features/articles/presentation/screens/article_screen.dart';
 import 'package:echo/navigation_menu.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,8 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(builder: (context) => const NavigationMenu());
       case '/article':
-        if (args is String) {
-          return MaterialPageRoute(builder: (context) => ArticleScreen(url: args));
+        if (args is ArticleEntity) {
+          return MaterialPageRoute(builder: (context) => ArticleScreen(article: args));
         } else {
           return _errorRoute();
         }

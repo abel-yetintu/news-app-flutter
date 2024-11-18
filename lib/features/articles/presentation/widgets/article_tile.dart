@@ -72,7 +72,7 @@ class ArticleTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        sl<NavigationService>().routeTo(route: '/article', arguments: article.url);
+        sl<NavigationService>().routeTo(route: '/article', arguments: article);
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: context.screenHeight * .005),
@@ -81,6 +81,7 @@ class ArticleTile extends StatelessWidget {
         ),
         child: Row(
           children: [
+            
             // article image
 
             ClipRRect(

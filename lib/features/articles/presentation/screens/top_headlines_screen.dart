@@ -1,5 +1,6 @@
 import 'package:echo/core/enums/enums.dart';
 import 'package:echo/core/utils/extensions.dart';
+import 'package:echo/core/utils/helper_functions.dart';
 import 'package:echo/core/utils/helper_widgets.dart';
 import 'package:echo/features/articles/presentation/bloc/category_bloc.dart';
 import 'package:echo/features/articles/presentation/bloc/top_headlines_bloc.dart';
@@ -69,15 +70,7 @@ class _TopHeadlinesScreenState extends State<TopHeadlinesScreen> {
         child: BlocConsumer<TopHeadlinesBloc, TopHeadlinesState>(
           listener: (context, state) {
             if (state is TopHeadlinesError) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    state.message,
-                    style: TextStyle(color: context.theme.colorScheme.onError),
-                  ),
-                  backgroundColor: context.theme.colorScheme.error,
-                ),
-              );
+              HelperFunctions.showErrorSnackBar(message: state.message);
             }
           },
           builder: (context, state) {

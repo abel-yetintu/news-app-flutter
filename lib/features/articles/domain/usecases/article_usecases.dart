@@ -25,3 +25,23 @@ class SearchArticlesUseCase {
     return await articleRepository.searchArticles(query: query);
   }
 }
+
+class FetchSavedArticlesUseCase {
+  final ArticleRepository articleRepository;
+
+  const FetchSavedArticlesUseCase({required this.articleRepository});
+
+  Future<Either<Failure, List<ArticleEntity>>> execute() async {
+    return await articleRepository.fetchSavedArticles();
+  }
+}
+
+class AddArticleUseCase {
+  final ArticleRepository articleRepository;
+
+  const AddArticleUseCase({required this.articleRepository});
+
+  Future<Either<Failure, int>> execute({required ArticleEntity article}) async {
+    return await articleRepository.addArticle(article: article);
+  }
+}

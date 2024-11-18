@@ -1,3 +1,4 @@
+import 'package:echo/features/articles/presentation/screens/saved_screen.dart';
 import 'package:echo/features/articles/presentation/screens/search_screen.dart';
 import 'package:echo/features/articles/presentation/screens/top_headlines_screen.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,7 @@ class _NavigationMenuState extends State<NavigationMenu> {
   final List<Widget> _screens = [
     const TopHeadlinesScreen(),
     const SearchScreen(),
-    const Center(
-      child: Text('Saved Screen'),
-    ),
+    const SavedScreen(),
   ];
   int _navigationMenuIndex = 0;
 
