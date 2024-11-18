@@ -29,7 +29,7 @@ Future<void> initSL() async {
 
   sl.registerFactory(() => SearchBloc(searchArticleUseCase: sl()));
 
-  sl.registerFactory(() => SavedArticleBloc(addArticleUseCase: sl(), fetchSavedArticlesUseCase: sl()));
+  sl.registerFactory(() => SavedArticleBloc(addArticleUseCase: sl(), fetchSavedArticlesUseCase: sl(), removeArticleUseCase: sl()));
 
   // use cases
 
@@ -40,6 +40,8 @@ Future<void> initSL() async {
   sl.registerLazySingleton(() => AddArticleUseCase(articleRepository: sl()));
 
   sl.registerLazySingleton(() => FetchSavedArticlesUseCase(articleRepository: sl()));
+
+  sl.registerLazySingleton(() => RemoveArticleUseCase(articleRepository: sl()));
 
   // repositories
 

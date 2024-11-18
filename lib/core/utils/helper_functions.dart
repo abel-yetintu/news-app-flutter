@@ -21,10 +21,11 @@ class HelperFunctions {
     );
   }
 
-  static void showSnackBar({required String message}) {
+  static void showSnackBar({required String message, SnackBarAction? snackBarAction}) {
     BuildContext context = sl<GlobalKey<NavigatorState>>().currentState!.context;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        action: snackBarAction,
         backgroundColor: context.theme.colorScheme.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),

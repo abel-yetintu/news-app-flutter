@@ -8,4 +8,5 @@ abstract class ArticleRepository {
   Future<Either<Failure, List<ArticleEntity>>> searchArticles({required String query});
   Future<Either<Failure, List<ArticleEntity>>> fetchSavedArticles();
   Future<Either<Failure, int>> addArticle({required ArticleEntity article});
+  Future<Either<Failure, int>> removeArticle({required ArticleEntity article});
 }

@@ -45,3 +45,13 @@ class AddArticleUseCase {
     return await articleRepository.addArticle(article: article);
   }
 }
+
+class RemoveArticleUseCase {
+  final ArticleRepository articleRepository;
+
+  const RemoveArticleUseCase({required this.articleRepository});
+
+  Future<Either<Failure, int>> execute({required ArticleEntity article}) async {
+    return await articleRepository.removeArticle(article: article);
+  }
+}

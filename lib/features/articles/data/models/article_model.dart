@@ -63,6 +63,7 @@ class ArticleModel extends DataMapper<ArticleEntity> with EquatableMixin {
 
   Map<String, dynamic> toDB() {
     return {
+      'id': id,
       'title': title,
       'description': description,
       'content': content,

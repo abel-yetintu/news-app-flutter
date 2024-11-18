@@ -36,7 +36,7 @@ class _ArticleScreenState extends State<ArticleScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.read<SavedArticleBloc>().add(AddArticle(article: widget.article));
+          context.read<SavedArticleBloc>().add(AddArticle(article: widget.article, reAdd: false));
         },
         child: const FaIcon(FontAwesomeIcons.heart),
       ),

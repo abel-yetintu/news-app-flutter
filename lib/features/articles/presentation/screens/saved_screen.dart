@@ -6,6 +6,8 @@ import 'package:echo/features/articles/presentation/bloc/saved_articles_event.da
 import 'package:echo/features/articles/presentation/widgets/article_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SavedScreen extends StatefulWidget {
   const SavedScreen({super.key});
@@ -63,7 +65,22 @@ class _SavedScreenState extends State<SavedScreen> {
                 },
                 itemBuilder: (context, index) {
                   final article = state.articles[index];
-                  return ArticleTile(article: article);
+                  return Slidable(
+                    endActionPane: ActionPane(
+                      motion: const StretchMotion(),
+                      children: [
+                        SlidableAction(
+                          backgroundColor: context.theme.colorScheme.error,
+                          foregroundColor: context.theme.colorScheme.onError,
+                          icon: FontAwesomeIcons.trash,
+                          onPressed: (context) {
+                            context.read<SavedArticleBloc>().add(RemoveArticle(article: article));
+                          },
+                        )
+                      ],
+                    ),
+                    child: ArticleTile(article: article),
+                  );
                 },
               );
             case SavedArticlesFailed():

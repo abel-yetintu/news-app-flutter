@@ -37,13 +37,17 @@ class ArticleRepositoryImpl implements ArticleRepository {
     try {
       final articles = await articleRemoteDataSource.searchArticles(query: query);
       return Right(articles.map((article) => article.mapToEntity()).toList());
+    } on DioException catch (e, stackTrace) {
+      debugPrint(e.toString());
+      debugPrint(stackTrace.toString());
+      return Left(Failure(message: HelperFunctions.getDioExceptionMessage(e)));
     } catch (e, stackTrace) {
       debugPrint(e.toString());
       debugPrint(stackTrace.toString());
       return Left(Failure(message: e.toString()));
     }
   }
-  
+
   @override
   Future<Either<Failure, List<ArticleEntity>>> fetchSavedArticles() async {
     try {
@@ -61,6 +65,25 @@ class ArticleRepositoryImpl implements ArticleRepository {
     try {
       final articleModel = ArticleModel.fromEntitiy(entity: article);
       final result = await articleLocalDataSource.addArticle(article: articleModel);
+      if (result == 0) {
+        const Left(Failure(message: 'Error while saving article'));
+      }
+      return Right(result);
+    } catch (e, stackTrace) {
+      debugPrint(e.toString());
+      debugPrint(stackTrace.toString());
+      return Left(Failure(message: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, int>> removeArticle({required ArticleEntity article}) async {
+    try {
+      final articleModel = ArticleModel.fromEntitiy(entity: article);
+      final result = await articleLocalDataSource.removeArticle(article: articleModel);
+      if (result == 0) {
+        const Left(Failure(message: 'Error while removing article'));
+      }
       return Right(result);
     } catch (e, stackTrace) {
       debugPrint(e.toString());

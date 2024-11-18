@@ -19,4 +19,10 @@ class ArticleLocalDataSourceImpl implements ArticleLocalDataSource {
     final result = await _databaseHelper.addArticle(article.toDB());
     return result;
   }
+
+  @override
+  Future<int> removeArticle({required ArticleModel article}) async {
+    final result = await _databaseHelper.removeArticle(article.toDB());
+    return result;
+  }
 }

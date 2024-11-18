@@ -49,6 +49,13 @@ class DatabaseHelper {
 
   Future<int> addArticle(Map<String, dynamic> article) async {
     final db = await database;
-    return db.insert('articles', article);
+    return db.insert('articles', article, conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  // remove article
+
+  Future<int> removeArticle(Map<String, dynamic> article) async {
+    final db = await database;
+    return db.delete('articles', where: 'id = ?', whereArgs: [article['id']]);
   }
 }
