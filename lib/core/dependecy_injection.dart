@@ -54,7 +54,9 @@ Future<void> initSL() async {
   sl.registerLazySingleton<ArticleLocalDataSource>(() => ArticleLocalDataSourceImpl(databaseHelper: sl()));
 
   // http client
-  sl.registerLazySingleton(() => Dio());
+  sl.registerLazySingleton(() => Dio(
+        BaseOptions(baseUrl: "https://gnews.io/api/v4"),
+      ));
 
   // local database
   sl.registerLazySingleton(() => DatabaseHelper.instance);
