@@ -111,6 +111,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     );
                   case SearchFailed():
                     return ListView.separated(
+                      key: const Key('error_listView'),
                       physics: const BouncingScrollPhysics(),
                       itemCount: 7,
                       separatorBuilder: (context, index) {

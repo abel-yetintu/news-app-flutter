@@ -5,38 +5,42 @@ import 'package:flutter/material.dart';
 
 class HelperFunctions {
   static void showErrorSnackBar({required String message}) {
-    BuildContext context = sl<GlobalKey<NavigatorState>>().currentState!.context;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: context.theme.colorScheme.error,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+    BuildContext? context = sl<GlobalKey<NavigatorState>>().currentState?.context;
+    if (context != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: context.theme.colorScheme.error,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            message,
+            style: context.textTheme.bodySmall?.copyWith(color: context.theme.colorScheme.onError),
+          ),
         ),
-        behavior: SnackBarBehavior.floating,
-        content: Text(
-          message,
-          style: context.textTheme.bodySmall?.copyWith(color: context.theme.colorScheme.onError),
-        ),
-      ),
-    );
+      );
+    }
   }
 
   static void showSnackBar({required String message, SnackBarAction? snackBarAction}) {
-    BuildContext context = sl<GlobalKey<NavigatorState>>().currentState!.context;
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        action: snackBarAction,
-        backgroundColor: context.theme.colorScheme.primary,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+    BuildContext? context = sl<GlobalKey<NavigatorState>>().currentState?.context;
+    if (context != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          action: snackBarAction,
+          backgroundColor: context.theme.colorScheme.primary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            message,
+            style: context.textTheme.bodySmall?.copyWith(color: context.theme.colorScheme.onPrimary),
+          ),
         ),
-        behavior: SnackBarBehavior.floating,
-        content: Text(
-          message,
-          style: context.textTheme.bodySmall?.copyWith(color: context.theme.colorScheme.onPrimary),
-        ),
-      ),
-    );
+      );
+    }
   }
 
   static String getDioExceptionMessage(DioException exception) {
