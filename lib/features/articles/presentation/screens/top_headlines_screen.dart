@@ -76,7 +76,9 @@ class _TopHeadlinesScreenState extends State<TopHeadlinesScreen> {
           builder: (context, state) {
             switch (state) {
               case TopHeadlinesInitial():
-                return Container();
+                return Container(
+                  key: const Key('_emptyContainer'),
+                );
               case TopHeadlinesLoading():
                 return ListView.separated(
                   physics: const BouncingScrollPhysics(),
@@ -102,6 +104,7 @@ class _TopHeadlinesScreenState extends State<TopHeadlinesScreen> {
                 );
               case TopHeadlinesError():
                 return ListView.separated(
+                  key: const Key('error_listView'),
                   physics: const BouncingScrollPhysics(),
                   itemCount: 7,
                   separatorBuilder: (context, index) {
