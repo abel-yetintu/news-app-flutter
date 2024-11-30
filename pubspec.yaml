@@ -25,9 +25,15 @@ dependencies:
   webview_flutter: 4.8.0
 
 dev_dependencies:
+  bdd_widget_test: ^1.7.4
+  bloc_test: ^9.1.7
+  build_runner: 2.4.11
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
+  mocktail: ^1.0.4
 
 flutter:
   uses-material-design: true

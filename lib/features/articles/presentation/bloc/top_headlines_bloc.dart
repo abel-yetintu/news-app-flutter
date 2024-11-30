@@ -3,7 +3,6 @@ import 'package:echo/features/articles/domain/entities/article_entity.dart';
 import 'package:echo/features/articles/domain/usecases/article_usecases.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 part 'top_headlines_event.dart';
 part 'top_headlines_state.dart';
 

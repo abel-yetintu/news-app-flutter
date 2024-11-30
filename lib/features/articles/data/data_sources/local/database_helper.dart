@@ -33,7 +33,7 @@ class DatabaseHelper {
         image TEXT,
         publishedAt INTEGER,
         sourceName TEXT,
-        sourceUrl TExt
+        sourceUrl TEXT
       )
 ''');
   }
